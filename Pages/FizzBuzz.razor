@@ -48,9 +48,26 @@
 
     private void GenerateFizzBuzzResults()
     {
-        // This method will be called when the form is submitted.
-        // You can implement the logic to generate FizzBuzz results here.
-        // For now, it does nothing.
-    }
+        fizzBuzzResults.Clear();
 
+        for(int i = fizzBuzzModel.FizzValue; i <= fizzBuzzModel.StopValue; i++)
+        {
+            if (i % fizzBuzzModel.FizzValue == 0 && i % fizzBuzzModel.BuzzValue == 0)
+            {
+                fizzBuzzResults.Add("FizzBuzz");
+            }
+            else if (i % fizzBuzzModel.FizzValue == 0)
+            {
+                fizzBuzzResults.Add("Fizz");
+            }
+            else if (i % fizzBuzzModel.BuzzValue == 0)
+            {
+                fizzBuzzResults.Add("Buzz");
+            }
+            else
+            {
+                fizzBuzzResults.Add(i.ToString());
+            }
+        }
+    }
 }
