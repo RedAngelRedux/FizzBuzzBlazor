@@ -1,11 +1,11 @@
 ﻿.Fizz {
-    background-color: var(--cf-light-color);
-    color: var(--cf-dark-color);
+    background-color: var(--cf-theme-light-color);
+    color: var(--cf-theme-dark-color);
 }
 
 .Buzz {
-    background-color: var(--cf-dark-color);
-    color: var(--cf-light-color);
+    background-color: var(--cf-theme-dark-color);
+    color: var(--cf-theme-light-color);
 }
 
 .FizzBuzz {
