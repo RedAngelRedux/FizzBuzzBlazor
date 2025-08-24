@@ -77,7 +77,12 @@ public class FizzBuzzValidator : ComponentBase, IDisposable
         if(CurrentEditContext.GetValidationMessages().Any())
         {
             // If there are validation errors, trigger the OnValidationError callback
-            await OnValidationError.InvokeAsync();
+            //await OnValidationError.InvokeAsync();
+            if (OnValidationError.HasDelegate)
+            {
+                await OnValidationError.InvokeAsync();
+            }
+
         }
     }
 

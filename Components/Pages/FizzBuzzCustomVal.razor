@@ -11,7 +11,7 @@
     <p>Enter your values and press the button to see how the FizzBuzz challenge is solved.</p>
     <p>This version uses EditContext to perform cross-field validation.</p>
 
-    <EditForm EditContext="editContext" OnValidSubmit="GenerateFizzBuzzResults" OnInvalidSubmit="GenerateFizzBuzzResults">
+    <EditForm EditContext="editContext" OnValidSubmit="GenerateFizzBuzzResults">
         <DataAnnotationsValidator />
         <FizzBuzzValidator OnValidationError="ClearFizzBuzzResults" />
         <div class="border border-secondary-subtle rounded p-4">

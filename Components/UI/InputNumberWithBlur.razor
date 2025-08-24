@@ -1,0 +1,54 @@
+﻿@* 
+This component turned out to be unnecessary after all, because InputNumber already has an OnBlur event. 
+I thought there was somthing wrong with it, because of the "dbouble-submit" issue I encountered, 
+but it turned out to be something else which I have not yet figgured out.  I'll revisit this later.
+
+I will leave this code in here for now, to serve as a reference if I need to create a custom InputNumber component in the future.
+
+NOTE:  The "dbouble-submit" can be duplicated by performing the following steps:
+
+1.  Use the FizzBuzzCustomVal.razor component in a page.
+2.  Enter an invalid value in any of the number fields.
+3.  Click the Submit button.
+    a.  The validation will fail and the validation message will be displayed.
+4.  Change the value in the invalid field to a valid number but do not hit enter or tab.
+5.  Click the Submit button.
+    a.  The validation will pass but the OnValidSubmit event will not be fired.
+    b.  Click on the Submit button again and the OnValidSubmit event will be fired.
+
+Under all other circumstances, i.e. tabbing out first, hitting enter, clicking directly on Submit when value is valid, 
+the OnValidSubmit event is fired as expected.
+*@
+
+@inherits InputNumber<TValue>
+
+@typeparam TValue
+
+<input @attributes="AdditionalAttributes"
+       id="@Id"
+       class="@CssClass"
+       type="number"
+       @bind="CurrentValue"
+       @onblur="OnBlurHandler"
+       step="@Step"/>
+
+ @code {
+
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public string? Step { get; set; }
+
+    [Parameter]
+    public EventCallback OnBlurCallBack { get; set; }
+
+    private void OnBlurHandler(FocusEventArgs e)
+    {
+        if (OnBlurCallBack.HasDelegate)
+        {
+            OnBlurCallBack.InvokeAsync();
+        }
+    }
+}
