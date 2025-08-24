@@ -40,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="col text-end mt-2">
-                    <button type="submit" class="btn btn-primary" arial-label="Generate FizzBuzz Results">Generate</button>
+                    <button type="submit" onmousedown="@CheckValidState" class="btn btn-primary" arial-label="Generate FizzBuzz Results">Generate</button>
                 </div>
             </div>
         </div>
@@ -78,9 +78,21 @@
         };
     }
 
+    /// <summary>
+    /// This method clears the FizzBuzz results.
+    /// </summary>
     private void ClearFizzBuzzResults()
     {
         fizzBuzzResults.Clear();
+    }
+
+    /// <summary>
+    /// This method was added to ensure the EditContext is validated before the form is submitted.
+    /// It is a workaround to the fact that EditForm does not validate cross-field validation before submitting.
+    /// </summary>
+    private void CheckValidState()
+    {        
+        if (editContext is not null) editContext.Validate();        
     }
 
     private void GenerateFizzBuzzResults()
