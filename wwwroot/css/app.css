@@ -14,15 +14,6 @@ html, body {
     min-height: 100vh;
 }
 
-/*h1, h2, h3, h4, h5, h6 {
-    font-family: var(--cf-title-font);
-}
-
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: var(--cf-dark-color);
-}
-*/
-
 #app {
     height: 100%;
 }
